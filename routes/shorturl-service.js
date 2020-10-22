@@ -15,10 +15,10 @@ shortUrlService.generateShortUrl = async(originUrl)=>{
     let err, result, data, counter, shortUrl;
     try{
 
-        [err, result] = await shortUrlRedisAccess.getShortUrl(originUrl);
+        [err, result] = await shortUrlRedisAccessshortUrlRedisAccess.getShortUrl(originUrl);
         if(err)throw err;
         if(result){
-            await shortUrlRedisAccess.setMappingUrlExpire(originUrl);
+            await shortUrlRedisAccess.setUrlMappingExpire(originUrl);
             return result;
         }
 
@@ -35,8 +35,8 @@ shortUrlService.generateShortUrl = async(originUrl)=>{
         };
 
         Promise.all([
-            shortUrlMysqlAccess.insertMappingUrl(data),
-            shortUrlRedisAccess.saveMappingUrl(originUrl, shortUrl)
+            shortUrlMysqlAccess.insertUrlMapping(data),
+            shortUrlRedisAccess.saveUrlMapping(originUrl, shortUrl)
         ]);
 
         return shortUrl;

@@ -29,11 +29,11 @@ shortUrlRedisAccess.getShortUrl = async(originUrl)=>{
     return await redisConn.hget(originUrl, originUrl);
 }
 
-shortUrlRedisAccess.setMappingUrlExpire = async(originUrl)=>{
+shortUrlRedisAccess.setUrlMappingExpire = async(originUrl)=>{
     return await redisConn.expire(originUrl, REDIS.value.expire_time);
 }
 
-shortUrlRedisAccess.saveMappingUrl = async(originUrl, shortUrl)=>{
+shortUrlRedisAccess.saveUrlMapping = async(originUrl, shortUrl)=>{
     let values = [
         ["hset", originUrl, originUrl, shortUrl],
         ["expire", originUrl, REDIS.value.expire_time]

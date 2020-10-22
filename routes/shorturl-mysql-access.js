@@ -35,7 +35,7 @@ SET
     ${urlMappingInsertColumns}
 `;
 
-shortUrlMysqlAccess.insertMappingUrl = async(data)=> {
+shortUrlMysqlAccess.insertUrlMapping = async(data)=> {
     let err, result;
     let params = [
         data.idx,
