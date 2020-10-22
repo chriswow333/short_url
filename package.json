@@ -1,0 +1,34 @@
+{
+    "name": "shorturl",
+    "version": "1.0.0",
+    "description": "short url",
+    "main": "app.js",
+    "scripts": {
+        "start": "node app"
+    },
+    "dependencies": {
+        "body-parser": "^1.19.0",
+        "compression": "^1.7.4",
+        "express": "^4.17.1",
+        "helmet": "^4.1.1",
+        "pm2": "^4.5.0",
+        "require-yml": "^2.0.0",
+        "serve-static": "^1.13.2",
+        "winston": "^3.3.3",
+        "winston-daily-rotate-file": "^4.5.0",
+        "redis": "^3.0.2",
+        "url-parse": "^1.4.7",
+        "mysql": "^2.18.1"
+    },
+    "keywords": [
+        "npm",
+        "node",
+        "pm2"
+    ],
+    "author": "Chris Yu",
+    "license": "ISC",
+    "repository": {
+      "type": "git",
+      "url": ""
+    }
+}

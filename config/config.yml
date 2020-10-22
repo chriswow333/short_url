@@ -1,0 +1,33 @@
+# server
+host: 127.0.0.1
+port: 3001
+mode: develop
+
+key: 0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ
+
+redis:
+  host: 127.0.0.1
+  port: 6379
+  key:
+    incr_index: incr_index_0
+    short_to_orig: short_to_orig
+  value:
+    init_index: 0
+    incr_step: 2
+    expire_time: 60
+
+mysql: 
+  database: short_url
+  host: 127.0.0.1
+  port: 3306
+  username: root
+  password: password
+  connection_limit: 10
+  wait_for_connections: true
+  queue_limit: 0
+
+logger: 
+  info_name: info-file
+  info_path: ./log
+  error_name: error-file
+  error_path: ./log
