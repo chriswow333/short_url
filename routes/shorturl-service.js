@@ -18,7 +18,7 @@ shortUrlService.generateShortUrl = async(originUrl)=>{
         [err, result] = await shortUrlRedisAccess.getShortUrl(originUrl);
         if(err)throw err;
         if(result){
-            await shortUrlRedisAccess.setUrlMappingExpire(originUrl);
+            shortUrlRedisAccess.setUrlMappingExpire(originUrl);
             return result;
         }
 
