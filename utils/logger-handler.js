@@ -9,7 +9,6 @@ const logErrorName = config.logger.error_name;
 let logErrorPath = config.logger.error_path;
 
 
-// LOGGER
 if (process.env.NODE_ENV === "production"){
   loggerHandler.logger = winston.createLogger({
     level: 'error',

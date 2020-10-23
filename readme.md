@@ -18,6 +18,7 @@ Date:  2020/10/23
             |- mysql-conn.js        # mysql library.
             |- redis-conn.js        # redis library.  
             |- logger-handler.js    # logger library.
+            |- init.js              # Execute before express start running.
 
 
 ###  STEPS ###
