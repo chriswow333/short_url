@@ -7,6 +7,8 @@ const helmet = require('helmet');
 const config = require('./config/config');
 const shortUrlRouter = require('./routes/shorturl-router');
 const mysqlConn = require('./utils/mysql-conn');
+const redisConn = require('./utils/redis-conn');
+
 const loggerHandler = require('./utils/logger-handler.js');
 
 const logger = loggerHandler.logger;
@@ -33,6 +35,7 @@ init.init().then(()=>{
 
     process.on('SIGINT', function() {
         mysqlConn.pool.end(function(err) {
+            redisConn.quit();
             process.exit(err ? 1 : 0);
         });
     });

@@ -9,14 +9,24 @@ const config = require("../config/config");
 const REDIS = config.redis;
 const logger = loggerHandler.logger;
 
-const client = redis.createClient({
-    host: REDIS.host,
-    port: REDIS.port
-});
+let client = null;
 
-client.on('error', function(err){ 
-    logger.error(err);
-});
+
+redisConn.init = function(){
+    client = redis.createClient({
+        host: REDIS.host,
+        port: REDIS.port
+    });
+
+    client.on('error', function(err){ 
+        logger.error(err);
+    });
+}
+
+redisConn.quit = function(){
+    client.quit();
+}
+
 
 redisConn.hget = (key, field)=>{
     return new Promise((resolve, reject)=>{
@@ -116,6 +126,7 @@ redisConn.multi = (values)=>{
         return[err, null];
     });
 }
+
 
 
 module.exports = redisConn;

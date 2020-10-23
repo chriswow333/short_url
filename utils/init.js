@@ -18,7 +18,7 @@ LIMIT 1
 `;
 
 init.init = async()=>{
-
+    redisConn.init();
     let err, result, index;
     [err, result] = await mysqlConn.query(GET_LAST_INDEX, null);
     if(err) throw err;

@@ -15,7 +15,7 @@ shortUrlService.generateShortUrl = async(originUrl)=>{
     let err, result, data, counter, shortUrl;
     try{
 
-        [err, result] = await shortUrlRedisAccessshortUrlRedisAccess.getShortUrl(originUrl);
+        [err, result] = await shortUrlRedisAccess.getShortUrl(originUrl);
         if(err)throw err;
         if(result){
             await shortUrlRedisAccess.setUrlMappingExpire(originUrl);
@@ -26,7 +26,7 @@ shortUrlService.generateShortUrl = async(originUrl)=>{
         if(err)throw err;
         
         counter = result;
-        shortUrl = fromDecimalToHex(counter);
+        shortUrl = shortUrlService.fromDecimalToHex(counter);
         
         data = {
             idx:counter,
@@ -49,7 +49,7 @@ shortUrlService.generateShortUrl = async(originUrl)=>{
 
 const KEY = config.key;
 const CARRYING = KEY.length;
-const fromDecimalToHex = (counter)=>{
+shortUrlService.fromDecimalToHex = (counter)=>{
     let shortUrl = "";
     while(counter > 0) {
         let index = counter % CARRYING;

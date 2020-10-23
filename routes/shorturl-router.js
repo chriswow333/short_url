@@ -10,8 +10,12 @@ router.post('/generation/shorturl', async(req,res,next)=> {
         let url = body.url;
         if(url){
             let shortUrl = await shortUrlService.generateShortUrl(url);
-            shortUrl = req.headers.host.concat("/shorturl/", shortUrl);
-            res.json({ success: true, data: shortUrl});
+            if(shortUrl){
+                shortUrl = req.headers.host.concat("/shorturl/", shortUrl);
+                res.json({ success: true, data: shortUrl});
+            }else {
+                res.json({ success: false, data: "Internal error"});
+            }
         }else {
             res.json({ success: false, data: "Please correct the input data."});
         }
