@@ -10,8 +10,8 @@ Date:  2020/10/23
     [Short url Archive]
         |- app.js                   # entry point.
         |- routes/                  
-            |- *-router.js          # end point
-            |- *-service.js         # process data from *-router.js
+            |- *-router.js          # end point.
+            |- *-service.js         # process data from *-router.js.
             |- *-mysql-access.js    # access mysql.  
             |- *-redis-access.js    # access redis.  
         |- utils/                  
@@ -19,8 +19,9 @@ Date:  2020/10/23
             |- redis-conn.js        # redis library.  
             |- logger-handler.js    # logger library.
             |- init.js              # Execute before express start running.
-
-
+        |- config/                  
+            |- config.js            # load config.yml.
+            |- config.yml           # config file.
 ###  STEPS ###
 
     [STEP 1] Using "npm install" command to install node_modules.
