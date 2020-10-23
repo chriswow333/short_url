@@ -4,7 +4,7 @@ const shortUrlService = require('./shorturl-service.js');
 
 const router = express.Router();
 
-router.post('/generation/shorturl', async(req,res,next)=> {
+router.post('/gen/shorturl', async(req,res,next)=> {
     try{
         let body = req.body;
         let url = body.url;
